@@ -34,6 +34,18 @@ public class Main {
 		privateView1.createPrivateRoom();
 		privateView1.createPrivateRoom();
 		privateView1.createPrivateRoom();
+		
+		
+		((메인회의실)meetingRoom2).소회의실View띄우기();
+		소회의실View privateView2 = ((메인회의실)meetingRoom2).privateView;
+		privateView2.list소회의실();
+		privateView2.createPrivateRoom();
+		
+		((메인회의실)meetingRoom3).소회의실View띄우기();
+		소회의실View privateView3 = ((메인회의실)meetingRoom3).privateView;
+		privateView3.enterRoom(privateView3.getTestRoomNumber());
+		privateView2.list소회의실();
+		privateView3.list소회의실();
 	}
 
 }

@@ -21,8 +21,14 @@ public class Launcher implements IObserver {
 				System.out.println(((User)currentUser).name + "님의 시스템 - 신규 유저 진입 " + ((User)newUser).name + " (" + ((User)newUser).ID + ")");
 			}
 		}
-		meetingRoom.update(users);
+		meetingRoom.update(currentUser, users);
 		allUsers = users;
+		for(int i = 0 ; i< allUsers.length ; i++) {
+			if(((User)currentUser).ID == ((User)allUsers[i]).ID) {
+				currentUser = allUsers[i];
+				break;
+			}
+		}
 	}
 
 	public void assignMeetingRoom(회의실 meetingRoom) {
@@ -32,7 +38,7 @@ public class Launcher implements IObserver {
 	public void enterRoom(IUser user) {
 		if (currentUser == null) {
 			currentUser = user;
-			meetingRoom = new 메인회의실(roomServer);
+			meetingRoom = new 메인회의실(userPool, roomServer, currentUser);
 			userPool.addNewUser(user);
 		}
 		else
